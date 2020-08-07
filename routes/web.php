@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('specialty', 'SpecialtyController');
+Route::resource('institute', 'InstituteController');
+Route::post('instituteStore', 'InstituteController@store');
+Route::post('instituteDestroy', 'InstituteController@destroy');
+Route::post('instituteEdit', 'InstituteController@edit');
+Route::post('instituteUpdate', 'InstituteController@update');
