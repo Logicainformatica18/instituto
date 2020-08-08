@@ -244,7 +244,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Mantenimiento Instituto</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -253,7 +253,7 @@
                                             <form action="" method="post" role="form" id="institute" name="institute">
                                                 <input type="hidden" name="id" id="id">
                                                 {{ csrf_field() }}
-                                                <input type="text" name="description" id="description"
+                                          Descripción :      <input type="text" name="description" id="description"
                                                     class="form-control">
 
 
@@ -262,12 +262,12 @@
                                         <div class="modal-footer">
                                             <input type="button" value="Nuevo" class="btn btn-warning"
                                                 onclick="instituteNew()" name="new">
-                                            <input type="button" value="Save" class="btn btn-success"
+                                            <input type="button" value="Guardar" class="btn btn-success"
                                                 onclick="instituteStore()" name="create">
                                             <input type="button" value="Modificar" class="btn btn-danger"
                                                 onclick="instituteUpdate();" name="update">
                                             <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
+                                                data-dismiss="modal">Cerrar</button>
                                             </form>
                                         </div>
                                     </div>
@@ -418,8 +418,6 @@
                 });
 
         }
-
-
     </script>
 
 
