@@ -21,3 +21,4 @@ Route::post('instituteStore', 'InstituteController@store');
 Route::post('instituteDestroy', 'InstituteController@destroy');
 Route::post('instituteEdit', 'InstituteController@edit');
 Route::post('instituteUpdate', 'InstituteController@update');
+Route::post('instituteShow', 'InstituteController@show');

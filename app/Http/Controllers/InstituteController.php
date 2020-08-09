@@ -58,9 +58,14 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        $show="%".$request["show"]."%";
+        $institutes=Institute::where('description',"like",$show)->paginate(6);
+        return view('institutetable',compact('institutes'));
+
+
     }
 
     /**

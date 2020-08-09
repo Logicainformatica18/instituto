@@ -28,7 +28,7 @@
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-success note-icon-pencil"
                                                     data-toggle="modal" data-target="#exampleModal"
-                                                    onclick="instituteEdit('{{ $institute->id }}'); instituteUp();  return false"></button>
+                                                    onclick="instituteEdit('{{ $institute->id }}'); Up();  return false"></button>
 
                                                 <!-- <button class="note-icon-pencil" ></button> -->
                                                 <button class="btn btn-danger note-icon-trash" onclick="instituteDestroy('{{ $institute->id }}'); return false"></button>
@@ -57,7 +57,7 @@
                 "responsive": false,
                 "autoWidth": false,
                 "paging": false,
-                "searching": true,
+                "searching": false,
                 "ordering": false
             });
             $('#example2').DataTable({
