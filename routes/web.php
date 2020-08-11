@@ -22,3 +22,15 @@ Route::post('instituteDestroy', 'InstituteController@destroy');
 Route::post('instituteEdit', 'InstituteController@edit');
 Route::post('instituteUpdate', 'InstituteController@update');
 Route::post('instituteShow', 'InstituteController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
