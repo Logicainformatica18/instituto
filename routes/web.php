@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//agregar para el login
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('institute', 'InstituteController');
-Route::post('instituteStore', 'InstituteController@store');
-Route::post('instituteDestroy', 'InstituteController@destroy');
-Route::post('instituteEdit', 'InstituteController@edit');
-Route::post('instituteUpdate', 'InstituteController@update');
-Route::post('instituteShow', 'InstituteController@show');
+
 
 Auth::routes();
 
@@ -34,3 +30,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['role:admin']], function () {
+    //
+    Route::resource('institute', 'InstituteController');
+    Route::post('instituteStore', 'InstituteController@store');
+    Route::post('instituteDestroy', 'InstituteController@destroy');
+    Route::post('instituteEdit', 'InstituteController@edit');
+    Route::post('instituteUpdate', 'InstituteController@update');
+    Route::post('instituteShow', 'InstituteController@show');
+});

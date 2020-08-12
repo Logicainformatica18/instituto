@@ -105,7 +105,15 @@
                     <a href="index.php" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="logout.php" class="nav-link">Cerrar Sesión</a>
+                    <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     {{ __('Cerrar Sesión') }}
+                 </a>
+
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     @csrf
+                 </form>
                 </li>
             </ul>
 
@@ -152,8 +160,18 @@
 
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">nombres</a>
-                        <a href="logout.php">Cerrar Sesión</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+
+                            <a  href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Cerrar Sesión') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
                     </div>
                 </div>
 

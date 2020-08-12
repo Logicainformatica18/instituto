@@ -16,6 +16,15 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+<!--  Comprobamos y le añadimos funcionalidades al usuario  -->
+                @can('create_cursos')
+                hola
+                @endcan
+                <div>
+
+                </div>
+
+
             </div>
         </div>
     </div>
