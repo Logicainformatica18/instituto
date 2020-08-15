@@ -40,3 +40,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('instituteUpdate', 'InstituteController@update');
     Route::post('instituteShow', 'InstituteController@show');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
