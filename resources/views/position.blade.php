@@ -1,19 +1,17 @@
 @extends('admin.template')
 @section('content')
-
-
                             <!-- Content Header (Page header) -->
                             <section class="content-header">
                                 <div class="container-fluid">
                                     <div class="row mb-2">
                                         <div class="col-sm-6">
-                                            <h1>Instituto</h1>
+                                            <h1>Cargos</h1>
                                             {{ session('success') }}
                                         </div>
                                         <div class="col-sm-6">
                                             <ol class="breadcrumb float-sm-right">
                                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                                <li class="breadcrumb-item active">Instituto</li>
+                                                <li class="breadcrumb-item active">Cargos</li>
                                             </ol>
                                         </div>
                                     </div>
@@ -21,18 +19,18 @@
                             </section>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal" onclick="New();$('#institute')[0].reset();">
+                                data-target="#exampleModal" onclick="New();$('#position')[0].reset();">
                                 Agregar
                             </button>
                             <p></p>
                             Buscar
                             <form  name="for"id="show">
-                                <input type="text"name="show" class="form-control" style="width: 50%"  onkeydown="instituteShow();">
+                                <input type="text"name="show" class="form-control" style="width: 50%"  onkeydown="positionShow();">
                             </form>
 
                             <p></p>
                             <div id="mycontent">
-                                @include("institutetable")
+                                @include("positiontable")
                             </div>
 
 
@@ -48,7 +46,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post" role="form" id="institute" name="form">
+                                            <form action="" method="post" role="form" id="position" name="form">
                                                 <input type="hidden" name="id" id="id">
                                                 {{ csrf_field() }}
                                           Descripción :      <input type="text" name="description" id="description"
@@ -59,11 +57,11 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" value="Nuevo" class="btn btn-warning"
-                                                onclick="New();$('#institute')[0].reset();" name="new">
+                                                onclick="New();$('#position')[0].reset();" name="new">
                                             <input type="button" value="Guardar" class="btn btn-success"
-                                                onclick="instituteStore()" name="create">
+                                                onclick="positionStore()" name="create">
                                             <input type="button" value="Modificar" class="btn btn-danger"
-                                                onclick="instituteUpdate();" name="update">
+                                                onclick="positionUpdate();" name="update">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Cerrar</button>
                                             </form>

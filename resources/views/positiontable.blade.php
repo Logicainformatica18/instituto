@@ -20,18 +20,18 @@
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($institutes as $institute)
+                                    @foreach ($positions as $position)
                                         <tr>
-                                            <td>{{ $institute->id }}</td>
-                                            <td>{{ $institute->description }}</td>
+                                            <td>{{ $position->id }}</td>
+                                            <td>{{ $position->description }}</td>
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-success note-icon-pencil"
                                                     data-toggle="modal" data-target="#exampleModal"
-                                                    onclick="instituteEdit('{{ $institute->id }}'); Up();  return false"></button>
+                                                    onclick="positionEdit('{{ $position->id }}'); Up();  return false"></button>
 
                                                 <!-- <button class="note-icon-pencil" ></button> -->
-                                                <button class="btn btn-danger note-icon-trash" onclick="instituteDestroy('{{ $institute->id }}'); return false"></button>
+                                                <button class="btn btn-danger note-icon-trash" onclick="positionDestroy('{{ $position->id }}'); return false"></button>
                                             </td>
 
                                         </tr>
@@ -40,11 +40,12 @@
 
                             </table>
                                 <!-- /.content -->
-                                {{ $institutes->onEachSide(1)->links() }}
+                                {{ $positions->onEachSide(1)->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 

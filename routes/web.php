@@ -39,6 +39,13 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('instituteEdit', 'InstituteController@edit');
     Route::post('instituteUpdate', 'InstituteController@update');
     Route::post('instituteShow', 'InstituteController@show');
+    //
+    Route::resource('position', 'PositionController');
+    Route::post('positionStore', 'PositionController@store');
+    Route::post('positionDestroy', 'PositionController@destroy');
+    Route::post('positionEdit', 'PositionController@edit');
+    Route::post('positionUpdate', 'PositionController@update');
+    Route::post('positionShow', 'PositionController@show');
 });
 
 Auth::routes();

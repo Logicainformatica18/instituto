@@ -25,15 +25,17 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link href="{{ asset('plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
-
-
-
-
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/png" />
 
-    <title>Hello, world!</title>
+
+
+
+<script src="{{ asset('function.js') }}"></script>
+
+
+    <title>Sistema Educativo!</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
@@ -208,7 +210,15 @@
                                 </p>
                             </a>
                         </li>
-
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('position.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Cargos
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -260,144 +270,32 @@
 
     <!-- /.content -->
 
-
-
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        function New() {
-            form.create.disabled = false;
-            form.new.disabled = false;
-            form.update.disabled = true;
-            //limpia por completo el formulario usando jquery
-            $("form")[0].reset();
-            form.id.value = "";
-        }
+        datatableResponsive();
 
-        function Up() {
-            form.create.disabled = true;
-            form.new.disabled = true;
-            form.update.disabled = false;
-        }
-
-        function instituteStore() {
-            var formData = new FormData(document.getElementById("institute"));
-            axios({
-                    method: 'post',
-                    url: 'instituteStore',
-                    data: formData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then(function(response) {
-                    //handle success
-                    var contentdiv = document.getElementById("mycontent");
-                    contentdiv.innerHTML = response.data;
-
-                })
-                .catch(function(response) {
-                    //handle error
-                    console.log(response);
-                });
-
-        }
-
-        function instituteDestroy(id) {
-            if (confirm("Esta seguro de Eliminar?")) {
-                var formData = new FormData(document.getElementById("institute"));
-                formData.append("id", id);
-                axios({
-                        method: 'post',
-                        url: "instituteDestroy",
-                        data: formData,
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    })
-                    .then(function(response) {
-                        //handle success
-                        var contentdiv = document.getElementById("mycontent");
-                        contentdiv.innerHTML = response.data;
-                    })
-                    .catch(function(response) {
-                        //handle error
-                        console.log(response);
-                    });
-            }
-        }
-
-        function instituteEdit(id) {
-            var formData = new FormData(document.getElementById("institute"));
-            formData.append("id", id);
-            axios({
-                    method: 'post',
-                    url: 'instituteEdit',
-                    data: formData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then(function(response) {
-                    //handle success
-                    var contentdiv = document.getElementById("mycontent");
-                    //   console.log(response.data);
-                    institute.id.value = response.data["id"];
-                    institute.description.value = response.data["description"];
-                })
-                .catch(function(response) {
-                    //handle error
-                    console.log(response);
-                });
-
-        }
-
-        function instituteUpdate() {
-            var formData = new FormData(document.getElementById("institute"));
-            axios({
-                    method: 'post',
-                    url: 'instituteUpdate',
-                    data: formData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then(function(response) {
-                    //handle success
-                    var contentdiv = document.getElementById("mycontent");
-                    contentdiv.innerHTML = response.data;
-                })
-                .catch(function(response) {
-                    //handle error
-                    console.log(response);
-                });
-
-        }
-
-        function instituteShow() {
-            var formData = new FormData(document.getElementById("show"));
-            axios({
-                    method: 'post',
-                    url: 'instituteShow',
-                    data: formData,
-                })
-                .then(function(response) {
-                    //handle success
-                    var contentdiv = document.getElementById("mycontent");
-                    contentdiv.innerHTML = response.data;
-                })
-                .catch(function(response) {
-                    //handle error
-                    console.log(response);
-                });
-
+        function datatableResponsive() {
+            $("#example1").DataTable({
+                "info": false,
+                "responsive": false,
+                "autoWidth": false,
+                "paging": false,
+                "searching": false,
+                "ordering": false
+            });
+            $('#example2').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": false,
+            });
         }
 
     </script>
-
-
-
 </body>
 
 </html>
