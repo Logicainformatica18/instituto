@@ -73,8 +73,6 @@
                     }
                 })
                 .then(function(response) {
-                    //handle success
-                    var contentdiv = document.getElementById("mycontent");
                     //   console.log(response.data);
                     institute.id.value = response.data["id"];
                     institute.description.value = response.data["description"];
@@ -186,8 +184,6 @@ function positionEdit(id) {
             }
         })
         .then(function(response) {
-            //handle success
-            var contentdiv = document.getElementById("mycontent");
             //   console.log(response.data);
             position.id.value = response.data["id"];
             position.description.value = response.data["description"];
@@ -226,6 +222,117 @@ function positionShow() {
     axios({
             method: 'post',
             url: 'positionShow',
+            data: formData,
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+//
+function personStore() {
+    var formData = new FormData(document.getElementById("person"));
+    axios({
+            method: 'post',
+            url: 'personStore',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function personDestroy(id) {
+    if (confirm("Esta seguro de Eliminar?")) {
+        var formData = new FormData(document.getElementById("person"));
+        formData.append("id", id);
+        axios({
+                method: 'post',
+                url: "personDestroy",
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(function(response) {
+                //handle success
+                var contentdiv = document.getElementById("mycontent");
+                contentdiv.innerHTML = response.data;
+            })
+            .catch(function(response) {
+                //handle error
+                console.log(response);
+            });
+    }
+}
+
+function personEdit(id) {
+    var formData = new FormData(document.getElementById("person"));
+    formData.append("id", id);
+    axios({
+            method: 'post',
+            url: 'personEdit',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //   console.log(response.data);
+            person.id.value = response.data["id"];
+            person.description.value = response.data["description"];
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function personUpdate() {
+    var formData = new FormData(document.getElementById("person"));
+    axios({
+            method: 'post',
+            url: 'personUpdate',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function personShow() {
+    var formData = new FormData(document.getElementById("show"));
+    axios({
+            method: 'post',
+            url: 'personShow',
             data: formData,
         })
         .then(function(response) {

@@ -13,7 +13,7 @@
                         <div class="card-body">
 
                             <!-- DataTables -->
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped table-responsive">
                                 <thead>
                                     <th class="sorting">ID</th>
                                     <th class="sorting">Description</th>

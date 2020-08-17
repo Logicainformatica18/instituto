@@ -46,6 +46,13 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('positionEdit', 'PositionController@edit');
     Route::post('positionUpdate', 'PositionController@update');
     Route::post('positionShow', 'PositionController@show');
+      //
+      Route::resource('person', 'PersonController');
+      Route::post('personStore', 'PersonController@store');
+      Route::post('personDestroy', 'PersonController@destroy');
+      Route::post('personEdit', 'PersonController@edit');
+      Route::post('personUpdate', 'PersonController@update');
+      Route::post('personShow', 'PersonController@show');
 });
 
 Auth::routes();
