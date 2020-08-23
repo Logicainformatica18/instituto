@@ -16,9 +16,10 @@ class PersonController extends Controller
     public function index()
     {
         //
-        $positions=Position::all();
+
+        $positions = Position::all();
         $persons = Person::orderBy('id', 'DESC')->paginate(6);
-        return view('person', compact('persons','positions'));
+        return view('person', compact('persons', 'positions'));
     }
 
     /**
@@ -28,7 +29,9 @@ class PersonController extends Controller
      */
     public function create()
     {
+
         //
+
     }
 
     /**
@@ -40,6 +43,49 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        //datebirth
+        if ($request["day"] < 10) {
+            $request["day"] = "0" . $request["day"];
+        }
+        if ($request["month"] < 10) {
+            $request["month"] = "0" . $request["month"];
+        }
+        $request["datebirth"] =    $request["year"] . "-" . $request["month"] . "-" . $request["day"];
+
+
+        //photo
+        if($request["photo"]!=""){
+            $image = $request->file('photo');
+            $image->move('uploads', $image->getClientOriginalName());
+            $image = $image->getClientOriginalName();
+            $request["photo"]=$image;
+        }
+
+//,'dni' => 'required','firtname' => 'required','lastname' => 'required','names' => 'required','email' => 'required','datebirth' => 'required'
+    //    $this->validate($request, ['positionid' => 'required']);
+  //  $this->validate($request, ['positionid' => 'required']);
+//  $this->validate($request, ['positionid' => 'required']);
+ // Person::create($request->all());
+     $person = new Person();
+     $person->positionid = $request->positionid;
+     $person->dni = $request->dni;
+     $person->firstname = $request->firstname;
+     $person->lastname = $request->lastname;
+     $person->names = $request->names;
+     $person->password = $request->password;
+   //  $person->datebirth = $request->datebirth;
+     $person->cellphone = $request->cellphone;
+     $person->photo = $request->photo;
+     $person->email = $request->email;
+     $person->sex = $request->sex;
+     $person->save();
+
+
+  //     Person::create($request->all());
+
+     //  return  "<img src='uploads/$image' width='100'height='100'>";
     }
 
     /**
@@ -48,9 +94,14 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        //    $show="%".$request["show"]."%";
+        //    $institutes=Institute::where('description',"like",$show)->paginate(6);
+        //      return view('institutetable',compact('institutes'));
+
+
     }
 
     /**
@@ -59,9 +110,17 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        //     $institutes =  Institute::find($request["id"]);
+        //     return $institutes;
+
+
+
+
+
+        //return view('libro.',compact('institutes'));
     }
 
     /**
@@ -71,9 +130,12 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        //     $this->validate($request, ['description' => 'required']);
+        //    Institute::find($request["id"])->update($request->all());
+        //    return   $this->create();
     }
 
     /**
@@ -82,8 +144,10 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+           Person::find($request["id"])->delete();
+          //  return   $this->create();
     }
 }

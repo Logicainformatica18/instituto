@@ -1,4 +1,13 @@
 
+function readImage(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
 
         function New() {
@@ -333,6 +342,121 @@ function personShow() {
     axios({
             method: 'post',
             url: 'personShow',
+            data: formData,
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+
+
+//
+function specialtyStore() {
+    var formData = new FormData(document.getElementById("specialty"));
+    axios({
+            method: 'post',
+            url: 'specialtyStore',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function specialtyDestroy(id) {
+    if (confirm("Esta seguro de Eliminar?")) {
+        var formData = new FormData(document.getElementById("specialty"));
+        formData.append("id", id);
+        axios({
+                method: 'post',
+                url: "specialtyDestroy",
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(function(response) {
+                //handle success
+                var contentdiv = document.getElementById("mycontent");
+                contentdiv.innerHTML = response.data;
+            })
+            .catch(function(response) {
+                //handle error
+                console.log(response);
+            });
+    }
+}
+
+function specialtyEdit(id) {
+    var formData = new FormData(document.getElementById("specialty"));
+    formData.append("id", id);
+    axios({
+            method: 'post',
+            url: 'specialtyEdit',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+              specialty.id.value = response.data["id"];
+            specialty.description.value = response.data["description"];
+            specialty.instituteid.value = response.data["instituteid"];
+          // console.log(response.data);
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function specialtyUpdate() {
+    var formData = new FormData(document.getElementById("specialty"));
+    axios({
+            method: 'post',
+            url: 'specialtyUpdate',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function specialtyShow() {
+    var formData = new FormData(document.getElementById("show"));
+    axios({
+            method: 'post',
+            url: 'specialtyShow',
             data: formData,
         })
         .then(function(response) {

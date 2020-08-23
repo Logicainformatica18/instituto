@@ -57,8 +57,6 @@
                                 <option value="{{ $position->id }}">{{ $position->description }}</option>
                             @endforeach
                         </select>
-
-
                         Descripción : <input type="text" name="description" id="description" class="form-control">
                         Dni<input name="dni" type="number" class="form-control">
                         Paterno<input name="firstname" type="text" class="form-control">
@@ -91,13 +89,13 @@
                         Fecha de Nacimiento :
                         <div class="row">
                             <div class="col s4">
-                                <select name="Dia" class="form-control">
+                                <select name="day" class="form-control">
                                     <option>Dia</option>
                                     <?php for ($a = 1; $a <= 31; $a++) { echo "<option value='$a'>" . $a
                                         . '</option>' ; } ?> </select>
                             </div>
                             <div class="col s4">
-                                <select name="Mes" class="form-control">
+                                <select name="month" class="form-control">
                                     <option>Mes</option>
                                     <?php
                                     $mes = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov',
@@ -106,7 +104,7 @@
                                         ?> </select>
                             </div>
                             <div class="col s4">
-                                <select name="Año" class="form-control">
+                                <select name="year" class="form-control">
                                     <option>Año</option>
                                     <?php
                                     $c = 2020;

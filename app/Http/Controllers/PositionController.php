@@ -43,7 +43,13 @@ class PositionController extends Controller
     {
         //
         $this->validate($request, ['description' => 'required']);
-        Position::create($request->all());
+     //   Position::create($request->all());
+    $position = new Position();
+     $position->description = $request->description;
+
+     $position->save();
+
+
 
         //    return $this->withSuccess('Valor del success');
      //   return response()->redirectToAction('positionController@create');

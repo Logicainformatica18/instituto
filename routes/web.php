@@ -53,6 +53,14 @@ Route::group(['middleware' => ['role:admin']], function () {
       Route::post('personEdit', 'PersonController@edit');
       Route::post('personUpdate', 'PersonController@update');
       Route::post('personShow', 'PersonController@show');
+
+            //
+            Route::resource('specialty', 'SpecialtyController');
+            Route::post('specialtyStore', 'SpecialtyController@store');
+            Route::post('specialtyDestroy', 'SpecialtyController@destroy');
+            Route::post('specialtyEdit', 'SpecialtyController@edit');
+            Route::post('specialtyUpdate', 'SpecialtyController@update');
+            Route::post('specialtyShow', 'SpecialtyController@show');
 });
 
 Auth::routes();
