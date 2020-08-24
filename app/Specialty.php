@@ -8,5 +8,5 @@ class Specialty extends Model
 {
     //
     public $table="specialty";
-    protected $fillable=["id","description"];
+    protected $fillable=["id","description","instituteid"];
 }

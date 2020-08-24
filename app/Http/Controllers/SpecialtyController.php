@@ -60,11 +60,10 @@ class SpecialtyController extends Controller
     {
         //
         $this->validate($request, ['description' => 'required', 'instituteid' => 'required']);
-        //   Position::create($request->all());
-        $position = new Specialty();
-        $position->description = $request->description;
-        $position->instituteid = $request->instituteid;
-        $position->save();
+        $specialty = new Specialty();
+        $specialty->description = $request->description;
+        $specialty->instituteid = $request->instituteid;
+        $specialty->save();
         return $this->create();
     }
 
@@ -99,8 +98,6 @@ class SpecialtyController extends Controller
     {
         //
         $specialtys = Specialty::find($request["id"]);
-        return $specialtys;
-
         return $specialtys;
     }
 

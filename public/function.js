@@ -471,3 +471,119 @@ function specialtyShow() {
 
 }
 
+
+
+//
+function courseStore() {
+    var formData = new FormData(document.getElementById("course"));
+    axios({
+            method: 'post',
+            url: 'courseStore',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function courseDestroy(id) {
+    if (confirm("Esta seguro de Eliminar?")) {
+        var formData = new FormData(document.getElementById("course"));
+        formData.append("id", id);
+        axios({
+                method: 'post',
+                url: "courseDestroy",
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(function(response) {
+                //handle success
+                var contentdiv = document.getElementById("mycontent");
+                contentdiv.innerHTML = response.data;
+            })
+            .catch(function(response) {
+                //handle error
+                console.log(response);
+            });
+    }
+}
+
+function courseEdit(id) {
+    var formData = new FormData(document.getElementById("course"));
+    formData.append("id", id);
+    axios({
+            method: 'post',
+            url: 'courseEdit',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+              course.id.value = response.data["id"];
+              course.description.value = response.data["description"];
+              course.specialtyid.value = response.data["specialtyid"];
+              course.cicle.value = response.data["cicle"];
+          // console.log(response.data);
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function courseUpdate() {
+    var formData = new FormData(document.getElementById("course"));
+    axios({
+            method: 'post',
+            url: 'courseUpdate',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
+function courseShow() {
+    var formData = new FormData(document.getElementById("show"));
+    axios({
+            method: 'post',
+            url: 'courseShow',
+            data: formData,
+        })
+        .then(function(response) {
+            //handle success
+            var contentdiv = document.getElementById("mycontent");
+            contentdiv.innerHTML = response.data;
+        })
+        .catch(function(response) {
+            //handle error
+            console.log(response);
+        });
+
+}
+
