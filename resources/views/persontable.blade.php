@@ -35,8 +35,20 @@
                                             <td>{{ $person->lastname }}</td>
                                             <td>{{ $person->names }}</td>
                                             <td>{{ $person->cellphone }}</td>
-                                            <td>{{ $person->photo }}</td>
-                                            <td>{{ $person->positionid }}</td>
+                                            @if ($person->photo == '' && $person->sex == 'M')
+                                                @php
+                                                $person->photo = 'male.png'
+                                                @endphp
+
+                                            @elseif($person->photo == '' && $person->sex == 'F')
+                                                @php
+                                                $person->photo = 'female.png'
+                                                @endphp
+                                            @endif
+                                            <td><img src="{{ asset('imageperson/' . $person->photo) }}" alt="" srcset=""
+                                                    width="50"></td>
+                                            <td>{{ $person->position }}</td>
+
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-success note-icon-pencil"
@@ -44,7 +56,8 @@
                                                     onclick="personEdit('{{ $person->id }}'); Up();  return false"></button>
 
                                                 <!-- <button class="note-icon-pencil" ></button> -->
-                                                <button class="btn btn-danger note-icon-trash" onclick="personDestroy('{{ $person->id }}'); return false"></button>
+                                                <button class="btn btn-danger note-icon-trash"
+                                                    onclick="personDestroy('{{ $person->id }}'); return false"></button>
                                             </td>
 
                                         </tr>
@@ -52,12 +65,11 @@
                                 </tbody>
 
                             </table>
-                                <!-- /.content -->
-                                {{ $persons->onEachSide(1)->links() }}
+                            <!-- /.content -->
+                            {{ $persons->onEachSide(1)->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-

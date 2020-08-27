@@ -57,7 +57,6 @@
                                 <option value="{{ $position->id }}">{{ $position->description }}</option>
                             @endforeach
                         </select>
-                        Descripción : <input type="text" name="description" id="description" class="form-control">
                         Dni<input name="dni" type="number" class="form-control">
                         Paterno<input name="firstname" type="text" class="form-control">
                         Materno<input name="lastname" type="text" class="form-control">
@@ -117,7 +116,7 @@
                             </div>
                         </div>
                         <p></p>
-                        <div class="container">
+                        <div class="container align-content-center">
                             <div class="form-group row">
                                 Fotografía
                                 <div class="col-sm-1"></div>
@@ -126,17 +125,20 @@
                                     <input type='file' id="imgInp" name="photo" onchange="readImage(this);">
                                 </div>
 
-                                <div class="col-sm-12">
-                                    <br>
-                                    <img id="blah" name="fotografia" src="https://via.placeholder.com/150" alt="Tu imagen"
-                                        class="img-bordered" width="50%">
-                                </div>
+
+                            </div>
+                            <div class="size-100">
+                                <br>
+                                <img id="blah" name="fotografia" src="https://via.placeholder.com/150" alt="Tu imagen"
+                                    class="img-bordered" width="100%">
                             </div>
                         </div>
 
+
+
                 </div>
                 <div class="modal-footer">
-                    <input type="button" value="Nuevo" class="btn btn-warning" onclick="New();$('#person')[0].reset();"
+                    <input type="button" value="Nuevo" class="btn btn-warning" onclick="New();$('#person')[0].reset(); person.fotografia.src='https://via.placeholder.com/150';"
                         name="new">
                     <input type="button" value="Guardar" class="btn btn-success" onclick="personStore()" name="create">
                     <input type="button" value="Modificar" class="btn btn-danger" onclick="personUpdate();" name="update">

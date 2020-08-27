@@ -25,7 +25,7 @@ class CreateTablePerson extends Migration
             $table->string("password");
             $table->date("datebirth");
             $table->string("cellphone",20);
-            $table->binary("photo");
+            $table->longText("photo")->nullable();
             $table->string("email",100)->unique();
             $table->string("sex",1);
             $table->timestamps();

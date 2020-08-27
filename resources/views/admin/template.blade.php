@@ -32,7 +32,7 @@
 
 
 
-<script src="{{ asset('function.js') }}"></script>
+    <script src="{{ asset('function.js') }}"></script>
 
 
     <title>Sistema Educativo!</title>
@@ -107,15 +107,14 @@
                     <a href="index.php" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                     {{ __('Cerrar Sesión') }}
-                 </a>
+                        {{ __('Cerrar Sesión') }}
+                    </a>
 
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                     @csrf
-                 </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
 
@@ -164,15 +163,14 @@
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
 
-                            <a  href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Cerrar Sesión') }}
-                            </a>
+                            {{ __('Cerrar Sesión') }}
+                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
                     </div>
                 </div>
@@ -200,7 +198,15 @@
                                 </li>
                             </ul>
                         </li>
-
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('person.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Person
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ route('institute.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>

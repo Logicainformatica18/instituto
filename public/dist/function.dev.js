@@ -271,9 +271,25 @@ function personEdit(id) {
       'Content-Type': 'multipart/form-data'
     }
   }).then(function (response) {
-    //   console.log(response.data);
     person.id.value = response.data["id"];
-    person.description.value = response.data["description"];
+    person.dni.value = response.data["dni"];
+    person.positionid.value = response.data["positionid"];
+    person.firstname.value = response.data["firstname"];
+    person.lastname.value = response.data["lastname"];
+    person.names.value = response.data["names"];
+    person.fotografia.src = "uploads/" + response.data["photo"];
+    person.email.value = response.data["email"];
+    person.cellphone.value = response.data["cellphone"];
+    var datebirth = new Date(response.data["datebirth"]);
+    person.day.value = datebirth.getDate();
+    person.month.value = datebirth.getMonth();
+    person.year.value = datebirth.getFullYear();
+
+    if (response.data["sex"] == "M") {
+      document.getElementById('M').checked = true;
+    } else {
+      document.getElementById('F').checked = true;
+    }
   })["catch"](function (response) {
     //handle error
     console.log(response);
