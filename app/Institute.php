@@ -15,4 +15,8 @@ class Institute extends Model
          y le agregamos los campos o columnas de la tabla que queremos llenar.
     */
     protected $fillable = ['id', 'description'];
+    public function specialty()
+    {
+        return $this->hasMany(Specialty::class);
+    }
 }

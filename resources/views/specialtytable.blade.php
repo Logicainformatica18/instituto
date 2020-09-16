@@ -27,7 +27,7 @@
                                             <td>{{ $specialty->id }}</td>
 
                                             <td>{{ $specialty->description }}</td>
-                                            <td>{{ $specialty->institute }}</td>
+                                            <td>{{ $specialty->institute->description }}</td>
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-success note-icon-pencil"

@@ -17,16 +17,8 @@ class SpecialtyController extends Controller
     {
         //  select
         $institutes = Institute::all();
-        //  table;
-        $specialtys = Specialty::select(
-            'specialty.id',
-            'specialty.description',
-            'institute.description as institute'
-        )
-            ->join('institute', 'institute.id', '=', 'specialty.instituteid')
-            ->orderBy('id', 'DESC')->paginate(6);
-
-        return view('specialty', compact('specialtys', 'institutes'));
+        $specialtys=Specialty::with("institute")->paginate();
+        return view('specialty',compact("specialtys","institutes"));
     }
 
 
