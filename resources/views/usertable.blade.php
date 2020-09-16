@@ -27,37 +27,37 @@
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($persons as $person)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $person->id }}</td>
-                                            <td>{{ $person->dni }}</td>
-                                            <td>{{ $person->firstname }}</td>
-                                            <td>{{ $person->lastname }}</td>
-                                            <td>{{ $person->names }}</td>
-                                            <td>{{ $person->cellphone }}</td>
-                                            @if ($person->photo == '' && $person->sex == 'M')
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->dni }}</td>
+                                            <td>{{ $user->firstname }}</td>
+                                            <td>{{ $user->lastname }}</td>
+                                            <td>{{ $user->names }}</td>
+                                            <td>{{ $user->cellphone }}</td>
+                                            @if ($user->photo == '' && $user->sex == 'M')
                                                 @php
-                                                $person->photo = 'male.png'
+                                                $user->photo = 'male.png'
                                                 @endphp
 
-                                            @elseif($person->photo == '' && $person->sex == 'F')
+                                            @elseif($user->photo == '' && $user->sex == 'F')
                                                 @php
-                                                $person->photo = 'female.png'
+                                                $user->photo = 'female.png'
                                                 @endphp
                                             @endif
-                                            <td><img src="{{ asset('imageperson/' . $person->photo) }}" alt="" srcset=""
+                                            <td><img src="{{ asset('imageusers/' . $user->photo) }}" alt="" srcset=""
                                                     width="50"></td>
-                                            <td>{{ $person->position }}</td>
+                                            <td>{{ $user->position }}</td>
 
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-success note-icon-pencil"
                                                     data-toggle="modal" data-target="#exampleModal"
-                                                    onclick="personEdit('{{ $person->id }}'); Up();  return false"></button>
+                                                    onclick="userEdit('{{ $user->id }}'); Up();  return false"></button>
 
                                                 <!-- <button class="note-icon-pencil" ></button> -->
                                                 <button class="btn btn-danger note-icon-trash"
-                                                    onclick="personDestroy('{{ $person->id }}'); return false"></button>
+                                                    onclick="userDestroy('{{ $user->id }}'); return false"></button>
                                             </td>
 
                                         </tr>
@@ -66,7 +66,7 @@
 
                             </table>
                             <!-- /.content -->
-                            {{ $persons->onEachSide(1)->links() }}
+                            {{ $users->onEachSide(1)->links() }}
                         </div>
                     </div>
                 </div>

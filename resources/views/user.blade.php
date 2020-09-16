@@ -21,18 +21,18 @@
     </section>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-        onclick="New();$('#person')[0].reset();">
+        onclick="New();$('#user')[0].reset();user.fotografia.src='https://via.placeholder.com/150';">
         Agregar
     </button>
     <p></p>
     Buscar
     <form name="for" id="show">
-        <input type="text" name="show" class="form-control" style="width: 50%" onkeydown="personShow();">
+        <input type="text" name="show" class="form-control" style="width: 50%" onkeydown="userShow();">
     </form>
 
     <p></p>
     <div id="mycontent">
-        @include("persontable")
+        @include("usertable")
     </div>
 
 
@@ -48,15 +48,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" role="form" id="person" name="form">
+                    <form action="" method="post" role="form" id="user" name="form">
                         <input type="hidden" name="id" id="id">
                         {{ csrf_field() }}
-                        Cargo:
-                        <select name="positionid" id="" class="form-control">
-                            @foreach ($positions as $position)
-                                <option value="{{ $position->id }}">{{ $position->description }}</option>
-                            @endforeach
-                        </select>
+
                         Dni<input name="dni" type="number" class="form-control">
                         Paterno<input name="firstname" type="text" class="form-control">
                         Materno<input name="lastname" type="text" class="form-control">
@@ -138,10 +133,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type="button" value="Nuevo" class="btn btn-warning" onclick="New();$('#person')[0].reset(); person.fotografia.src='https://via.placeholder.com/150';"
+                    <input type="button" value="Nuevo" class="btn btn-warning" onclick="New();$('#user')[0].reset(); user.fotografia.src='https://via.placeholder.com/150';"
                         name="new">
-                    <input type="button" value="Guardar" class="btn btn-success" onclick="personStore()" name="create">
-                    <input type="button" value="Modificar" class="btn btn-danger" onclick="personUpdate();" name="update">
+                    <input type="button" value="Guardar" class="btn btn-success" onclick="userStore()" name="create">
+                    <input type="button" value="Modificar" class="btn btn-danger" onclick="userUpdate();" name="update">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </form>
                 </div>

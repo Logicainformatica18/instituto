@@ -40,19 +40,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('instituteUpdate', 'InstituteController@update');
     Route::post('instituteShow', 'InstituteController@show');
     //
-    Route::resource('position', 'PositionController');
-    Route::post('positionStore', 'PositionController@store');
-    Route::post('positionDestroy', 'PositionController@destroy');
-    Route::post('positionEdit', 'PositionController@edit');
-    Route::post('positionUpdate', 'PositionController@update');
-    Route::post('positionShow', 'PositionController@show');
-    //
-    Route::resource('person', 'PersonController');
-    Route::post('personStore', 'PersonController@store');
-    Route::post('personDestroy', 'PersonController@destroy');
-    Route::post('personEdit', 'PersonController@edit');
-    Route::post('personUpdate', 'PersonController@update');
-    Route::post('personShow', 'PersonController@show');
+    Route::resource('user', 'UserController');
+    Route::post('userStore', 'UserController@store');
+    Route::post('userDestroy', 'UserController@destroy');
+    Route::post('userEdit', 'UserController@edit');
+    Route::post('userUpdate', 'UserController@update');
+    Route::post('userShow', 'UserController@show');
 
     //
     Route::resource('specialty', 'SpecialtyController');
@@ -72,4 +65,4 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home2');

@@ -245,11 +245,11 @@ function positionShow() {
 
 }
 //
-function personStore() {
-    var formData = new FormData(document.getElementById("person"));
+function userStore() {
+    var formData = new FormData(document.getElementById("user"));
     axios({
             method: 'post',
-            url: 'personStore',
+            url: 'userStore',
             data: formData,
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -268,13 +268,13 @@ function personStore() {
 
 }
 
-function personDestroy(id) {
+function userDestroy(id) {
     if (confirm("Esta seguro de Eliminar?")) {
-        var formData = new FormData(document.getElementById("person"));
+        var formData = new FormData(document.getElementById("user"));
         formData.append("id", id);
         axios({
                 method: 'post',
-                url: "personDestroy",
+                url: "userDestroy",
                 data: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -292,31 +292,34 @@ function personDestroy(id) {
     }
 }
 
-function personEdit(id) {
-    var formData = new FormData(document.getElementById("person"));
+function userEdit(id) {
+    var formData = new FormData(document.getElementById("user"));
     formData.append("id", id);
     axios({
             method: 'post',
-            url: 'personEdit',
+            url: 'userEdit',
             data: formData,
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
         .then(function(response) {
-            person.id.value = response.data["id"];
-            person.dni.value = response.data["dni"];
-            person.positionid.value = response.data["positionid"];
-            person.firstname.value = response.data["firstname"];
-            person.lastname.value = response.data["lastname"];
-            person.names.value = response.data["names"];
-            person.fotografia.src ="uploads/"+ response.data["photo"];
-            person.email.value = response.data["email"];
-            person.cellphone.value = response.data["cellphone"];
-            var datebirth  = new Date(response.data["datebirth"]);
-            person.day.value =datebirth.getDate();
-            person.month.value =datebirth.getMonth();
-            person.year.value =datebirth.getFullYear();
+
+            user.id.value = response.data["id"];
+            user.dni.value = response.data["dni"];
+            user.firstname.value = response.data["firstname"];
+            user.lastname.value = response.data["lastname"];
+            user.names.value = response.data["names"];
+            if(response.data["photo"]!=null){
+
+                user.fotografia.src ="imageusers/"+ response.data["photo"];
+            }
+            else{
+                user.fotografia.src ="https://via.placeholder.com/150";
+            }
+            user.email.value = response.data["email"];
+            user.cellphone.value = response.data["cellphone"];
+
 
             if (response.data["sex"]=="M") {
                 document.getElementById('M').checked=true;
@@ -324,6 +327,11 @@ function personEdit(id) {
             else{
                 document.getElementById('F').checked=true;
             }
+         var datebirth =  response.data["datebirth"];
+         user.month.value  = parseInt(datebirth.substr(5,2)) ;
+         user.day.value  = parseInt(datebirth.substr(8,2)) ;
+         user.year.value  = parseInt(datebirth.substr(0,4)) ;
+
         })
         .catch(function(response) {
             //handle error
@@ -332,11 +340,11 @@ function personEdit(id) {
 
 }
 
-function personUpdate() {
-    var formData = new FormData(document.getElementById("person"));
+function userUpdate() {
+    var formData = new FormData(document.getElementById("user"));
     axios({
             method: 'post',
-            url: 'personUpdate',
+            url: 'userUpdate',
             data: formData,
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -354,11 +362,11 @@ function personUpdate() {
 
 }
 
-function personShow() {
+function userShow() {
     var formData = new FormData(document.getElementById("show"));
     axios({
             method: 'post',
-            url: 'personShow',
+            url: 'userShow',
             data: formData,
         })
         .then(function(response) {

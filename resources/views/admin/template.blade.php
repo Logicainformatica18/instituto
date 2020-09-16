@@ -199,7 +199,7 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('person.index') }}" class="nav-link">
+                            <a href="{{ route('user.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Person
@@ -216,15 +216,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('position.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Cargos
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item has-treeview">
                             <a href="{{ route('specialty.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -294,7 +286,7 @@
 
     <!-- /.content -->
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{asset('axios.min.js')}}"></script>
 
     <script>
         datatableResponsive();

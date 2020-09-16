@@ -63,37 +63,6 @@ class PersonController extends Controller
     }
 
 
-    public function datebirth($day, $month, $year)
-    {
-        //       datebirth
-        if ($day < 10) {
-            $day = "0" . $day;
-        }
-        if ($month < 10) {
-            $month = "0" . $month;
-        }
-        $datebirth =    $year . "-" . $month . "-" . $day;
-        return $datebirth;
-    }
-    public function photoStore($photo,$directory)
-    {
-
-        if ($photo != "") {
-
-            //get imageName
-            $imageName =  time() . "_" . $photo->getClientOriginalName();
-            //move imageFile
-            $photo->move($directory, $imageName);
-            return    $imageName;
-        }
-    }
-    public function photoDestroy($photo,$directory)
-    {
-        if ($photo != "") {
-            $image_path = public_path() . '/'.$directory.'/' . $photo;
-            unlink($image_path);
-        }
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -104,7 +73,7 @@ class PersonController extends Controller
     {
 
 
-        $request->datebirth = $this->datebirth($request->day, $request->month, $request->year);
+        $request->datebirth = datebirth($request->day, $request->month, $request->year);
 
         try {
             $person = new Person();
@@ -117,7 +86,7 @@ class PersonController extends Controller
             $person->datebirth = $request->datebirth;
             $person->cellphone = $request->cellphone;
             //photo
-            $request->photo = $this->photoStore($request->file('photo'),"imageperson");
+            $request->photo = photoStore($request->file('photo'),"imageperson");
 
             $person->photo = $request->photo;
             $person->email = $request->email;
@@ -167,7 +136,7 @@ class PersonController extends Controller
      */
     public function update(Request $request)
     {
-        $request->datebirth = $this->datebirth($request->day, $request->month, $request->year);
+        $request->datebirth = datebirth($request->day, $request->month, $request->year);
 
         if ($request->photo == "") {
             Person::find($request->id)->update([
@@ -182,8 +151,8 @@ class PersonController extends Controller
             ]);
         } else {
             $table = Person::find($request["id"]);
-            $this->photoDestroy($table->photo,"imageperson");
-            $request->photo = $this->photoStore($request->file('photo'),"imageperson");
+            photoDestroy($table->photo,"imageusers");
+            $request->photo = photoStore($request->file('photo'),"imageusers");
             Person::find($request->id)->update([
                 'dni' => $request->dni,
                 'firstname' => $request->firstname,

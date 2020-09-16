@@ -15,10 +15,10 @@ class CreateTableRegistry extends Migration
     {
         Schema::create('registry', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("personid")->unsigned();
-            $table->foreign("personid")->references("id")->on("person"); 
+            $table->bigInteger("usersid")->unsigned();
+            $table->foreign("usersid")->references("id")->on("users");
             $table->bigInteger("teacher")->unsigned();
-            $table->foreign("teacher")->references("id")->on("person"); 
+            $table->foreign("teacher")->references("id")->on("users");
             $table->bigInteger("instituteid")->unsigned();
             $table->foreign("instituteid")->references("id")->on("institute");
             $table->bigInteger("courseid")->unsigned();

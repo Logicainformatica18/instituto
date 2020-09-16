@@ -15,8 +15,8 @@ class CreateTableBlog extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("personid")->unsigned();
-            $table->foreign("personid")->references("id")->on("person"); 
+            $table->bigInteger("usersid")->unsigned();
+            $table->foreign("usersid")->references("id")->on("users");
             $table->string("title");
             $table->longText("post");
             $table->string("page",100)->unique();
